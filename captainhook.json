@@ -1,0 +1,27 @@
+{
+  "config": {
+    "run": {
+      "mode": "docker",
+      "exec": "docker exec -i techscout-digest-php-1"
+    }
+  },
+  "pre-commit": {
+    "enabled": true,
+    "actions": [
+      {
+        "action": "vendor/bin/phpunit",
+        "options": {
+          "arguments": "--stop-on-failure"
+        }
+      }
+    ]
+  },
+  "commit-msg": {
+    "enabled": true,
+    "actions": [
+      {
+        "action": "\\Ramsey\\CaptainHook\\ValidateConventionalCommit"
+      }
+    ]
+  }
+}
