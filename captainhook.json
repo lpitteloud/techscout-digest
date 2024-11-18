@@ -16,6 +16,9 @@
       },
       {
         "action": "vendor/bin/php-cs-fixer fix --dry-run"
+      },
+      {
+        "action": "vendor/bin/phpstan analyse"
       }
     ]
   },
