@@ -13,6 +13,9 @@
         "options": {
           "arguments": "--stop-on-failure"
         }
+      },
+      {
+        "action": "vendor/bin/php-cs-fixer fix --dry-run"
       }
     ]
   },
