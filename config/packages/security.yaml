@@ -4,17 +4,17 @@ security:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory: { memory: null }
+        google_provider:
+            id: Authentication\Infrastructure\Symfony\Security\GoogleUserProvider
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             lazy: true
-            provider: users_in_memory
-            form_login:
-                login_path: login
-                check_path: login
+            provider: google_provider
+            custom_authenticators:
+                - Authentication\Infrastructure\Symfony\Security\GoogleAuthenticator
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used

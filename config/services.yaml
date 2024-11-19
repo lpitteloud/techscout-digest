@@ -22,6 +22,18 @@ services:
         resource: '../src/Shared/Infrastructure/Symfony/Controller/'
         tags: [ 'controller.service_arguments' ]
 
+    Authentication\:
+        resource: '../src/Authentication'
+        exclude:
+            - '../src/Authentication/Domain/Entity/'
+
     Authentication\Infrastructure\Symfony\Controller\:
         resource: '../src/Authentication/Infrastructure/Symfony/Controller/'
         tags: [ 'controller.service_arguments' ]
+    
+    Authentication\Infrastructure\Symfony\Adapter\GoogleAuthenticationAdapter:
+        arguments:
+            $googleClient: '@Authentication\Infrastructure\Symfony\Adapter\GoogleClientAdapter'
+    
+    Authentication\Infrastructure\Symfony\Adapter\GoogleClientAdapter:
+        decorates: 'knpu.oauth2.client.google'

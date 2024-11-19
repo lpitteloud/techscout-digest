@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Authentication\Behat\Context;
 
-use Behat\MinkExtension\Context\MinkContext;
+use Behat\MinkExtension\Context\RawMinkContext;
 use PHPUnit\Framework\Assert;
 
-class RedirectUnauthenticatedUserContext extends MinkContext
+class RedirectUnauthenticatedUserContext extends RawMinkContext
 {
     /**
      * @Given I am not authenticated

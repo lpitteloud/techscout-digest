@@ -1,11 +1,12 @@
 default:
     suites:
         authentication:
-              paths:
+            paths:
                 - '%paths.base%/tests/Authentication/Behat/Features'
-              contexts:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
                 - Tests\Authentication\Behat\Context\RedirectUnauthenticatedUserContext
-
+                - Tests\Authentication\Behat\Context\UserLoginContext
     extensions:
         FriendsOfBehat\SymfonyExtension:
             bootstrap: tests/bootstrap.php

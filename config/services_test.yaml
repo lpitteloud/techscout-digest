@@ -5,3 +5,10 @@ services:
 
     Tests\Authentication\:
         resource: '../tests/Authentication/*'
+
+    Tests\Authentication\Unit\Infrastructure\Symfony\Adapter\GoogleClientAdapterStub:
+        public: true
+        
+    Authentication\Infrastructure\Symfony\Adapter\GoogleAuthenticationAdapter:
+        arguments:
+            $googleClient: '@Tests\Authentication\Unit\Infrastructure\Symfony\Adapter\GoogleClientAdapterStub'
