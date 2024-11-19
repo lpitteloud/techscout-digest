@@ -1,0 +1,18 @@
+homepage:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /dashboard
+        permanent: true
+        
+authentication_controllers:
+    resource:
+        path: ../src/Authentication/Infrastructure/Symfony/Controller/
+        namespace: Authentication\Infrastructure\Symfony\Controller
+    type: attribute
+
+shared_controllers:
+    resource:
+        path: ../src/Shared/Infrastructure/Symfony/Controller/
+        namespace: Shared\Infrastructure\Symfony\Controller
+    type: attribute

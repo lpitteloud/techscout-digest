@@ -17,3 +17,11 @@ services:
         resource: '../src/Shared'
         exclude:
             - '../src/Shared/Infrastructure/Symfony/Kernel.php'
+
+    Shared\Infrastructure\Symfony\Controller\:
+        resource: '../src/Shared/Infrastructure/Symfony/Controller/'
+        tags: [ 'controller.service_arguments' ]
+
+    Authentication\Infrastructure\Symfony\Controller\:
+        resource: '../src/Authentication/Infrastructure/Symfony/Controller/'
+        tags: [ 'controller.service_arguments' ]

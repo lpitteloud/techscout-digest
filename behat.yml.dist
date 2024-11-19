@@ -1,0 +1,19 @@
+default:
+    suites:
+        authentication:
+              paths:
+                - '%paths.base%/tests/Authentication/Behat/Features'
+              contexts:
+                - Tests\Authentication\Behat\Context\RedirectUnauthenticatedUserContext
+
+    extensions:
+        FriendsOfBehat\SymfonyExtension:
+            bootstrap: tests/bootstrap.php
+            kernel:
+                class: Shared\Infrastructure\Symfony\Kernel
+                environment: test
+        Behat\MinkExtension:
+            base_url: 'https://localhost'
+            sessions:
+                symfony:
+                    symfony: ~

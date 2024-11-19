@@ -1,0 +1,7 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Tests\Authentication\:
+        resource: '../tests/Authentication/*'
