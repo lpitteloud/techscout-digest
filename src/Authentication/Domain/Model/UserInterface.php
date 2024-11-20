@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Authentication\Domain\Port;
+namespace Authentication\Domain\Model;
 
 interface UserInterface
 {

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Authentication\Infrastructure\Symfony\Adapter;
 
+use Authentication\Domain\Model\UserInterface as DomainUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Authentication\Domain\Port\UserInterface as DomainUserInterface;
 
 readonly class UserAdapter implements UserInterface, DomainUserInterface
 {

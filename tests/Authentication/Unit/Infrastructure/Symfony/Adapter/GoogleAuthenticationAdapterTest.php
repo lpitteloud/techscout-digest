@@ -24,9 +24,8 @@ class GoogleAuthenticationAdapterTest extends TestCase
             ->willReturn(new RedirectResponse($expectedUrl));
 
         $adapter = new GoogleAuthenticationAdapter($googleClient);
-        $authorizationUrl = $adapter->getRedirectResponse();
 
-        $this->assertStringStartsWith($expectedUrl, $authorizationUrl->getTargetUrl());
+        $this->assertStringStartsWith($expectedUrl, $adapter->getRedirectUrl());
     }
 
     public function testAuthenticateUser(): void

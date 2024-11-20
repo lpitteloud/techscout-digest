@@ -6,7 +6,6 @@ namespace Authentication\Application\Service;
 
 use Authentication\Domain\Model\User;
 use Authentication\Domain\Port\GoogleAuthenticationServiceInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 final class GoogleLoginService
 {
@@ -17,9 +16,9 @@ final class GoogleLoginService
         $this->googleAuthService = $googleAuthService;
     }
 
-    public function initiateGoogleLogin(): RedirectResponse
+    public function initiateGoogleLogin(): string
     {
-        return $this->googleAuthService->getRedirectResponse();
+        return $this->googleAuthService->getRedirectUrl();
     }
 
     public function handleGoogleCallback(string $code): ?User

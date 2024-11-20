@@ -29,16 +29,13 @@ class GoogleLoginServiceTest extends TestCase
     public function testInitiateGoogleLoginReturnsAuthUrl(): void
     {
         $expectedUrl = 'https://accounts.google.com/o/oauth2/auth';
-        $expectedResponse = new RedirectResponse($expectedUrl);
 
         $this->googleAuthenticationService
             ->expects($this->once())
-            ->method('getRedirectResponse')
-            ->willReturn($expectedResponse);
+            ->method('getRedirectUrl')
+            ->willReturn($expectedUrl);
 
-        $result = $this->loginService->initiateGoogleLogin();
-
-        $this->assertEquals($expectedUrl, $result->getTargetUrl());
+        $this->assertEquals($expectedUrl, $this->loginService->initiateGoogleLogin());
     }
 
     public function testHandleGoogleCallbackReturnsUser(): void

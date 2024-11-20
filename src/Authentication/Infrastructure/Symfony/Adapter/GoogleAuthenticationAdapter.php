@@ -7,7 +7,6 @@ namespace Authentication\Infrastructure\Symfony\Adapter;
 use Authentication\Domain\Port\GoogleClientInterface;
 use Authentication\Domain\Model\User;
 use Authentication\Domain\Port\GoogleAuthenticationServiceInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 use function PHPUnit\Framework\assertIsString;
 
@@ -18,9 +17,9 @@ readonly class GoogleAuthenticationAdapter implements GoogleAuthenticationServic
     ) {
     }
 
-    public function getRedirectResponse(): RedirectResponse
+    public function getRedirectUrl(): string
     {
-        return $this->googleClient->redirect(['email', 'profile']);
+        return $this->googleClient->redirect(['email', 'profile'])->getTargetUrl();
     }
 
     public function authenticateUser(string $code): ?User
