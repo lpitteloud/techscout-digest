@@ -16,7 +16,7 @@ final class GoogleLoginService
         $this->googleAuthService = $googleAuthService;
     }
 
-    public function initiateGoogleLogin(): string
+    public function getRedirectUrl(): string
     {
         return $this->googleAuthService->getRedirectUrl();
     }

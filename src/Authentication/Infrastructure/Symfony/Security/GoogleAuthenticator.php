@@ -8,7 +8,6 @@ use Authentication\Domain\Model\User;
 use Authentication\Infrastructure\Symfony\Adapter\UserAdapter;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
-use League\OAuth2\Client\Token\AccessToken;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,7 +37,6 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
     public function authenticate(Request $request): Passport
     {
         $client = $this->clientRegistry->getClient('google');
-        /** @var AccessToken $accessToken */
         $accessToken = $this->fetchAccessToken($client);
 
         return new SelfValidatingPassport(

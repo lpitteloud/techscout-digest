@@ -20,9 +20,7 @@ class GoogleLoginController extends AbstractController
     #[Route('/login/google', name: 'google_login')]
     public function initiateGoogleLogin(): Response
     {
-        $response = $this->loginService->initiateGoogleLogin();
-
-        return $this->redirect($response->getTargetUrl());
+        return $this->redirect($this->loginService->getRedirectUrl());
     }
 
     #[Route('/login/google/callback', name: 'google_login_callback')]

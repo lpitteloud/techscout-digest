@@ -35,7 +35,7 @@ class GoogleLoginServiceTest extends TestCase
             ->method('getRedirectUrl')
             ->willReturn($expectedUrl);
 
-        $this->assertEquals($expectedUrl, $this->loginService->initiateGoogleLogin());
+        $this->assertEquals($expectedUrl, $this->loginService->getRedirectUrl());
     }
 
     public function testHandleGoogleCallbackReturnsUser(): void
