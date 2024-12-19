@@ -52,7 +52,7 @@ class UserLoginContext extends RawMinkContext
 
         $queryParams = [
             'code' => 'fake_authorization_code',
-            'state' => $this->getSession()->getCookie('oauth2state'),
+            // 'state' => $this->getSession()->getCookie('oauth2state'),
         ];
 
         $callbackUrlWithParams = sprintf('%s?%s', $callbackUrl, http_build_query($queryParams));

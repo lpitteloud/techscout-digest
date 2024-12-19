@@ -15,6 +15,9 @@
         }
       },
       {
+        "action": "vendor/bin/behat"
+      },
+      {
         "action": "vendor/bin/php-cs-fixer fix --dry-run"
       },
       {

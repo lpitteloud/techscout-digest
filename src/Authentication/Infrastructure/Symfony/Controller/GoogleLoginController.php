@@ -6,8 +6,8 @@ namespace Authentication\Infrastructure\Symfony\Controller;
 
 use Authentication\Application\Service\GoogleLoginService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class GoogleLoginController extends AbstractController
@@ -17,14 +17,14 @@ class GoogleLoginController extends AbstractController
     ) {
     }
 
-    #[Route('/login/google', name: 'google_login')]
-    public function initiateGoogleLogin(): Response
+    #[Route('/login/google', name: 'google_login', methods: ['GET'])]
+    public function initiateGoogleLogin(): RedirectResponse
     {
         return $this->redirect($this->loginService->getRedirectUrl());
     }
 
-    #[Route('/login/google/callback', name: 'google_login_callback')]
-    public function handleGoogleCallback(Request $request): Response
+    #[Route('/login/google/callback', name: 'google_login_callback', methods: ['GET'])]
+    public function handleGoogleCallback(Request $request): RedirectResponse
     {
         $code = $request->query->get('code', '');
         $user = $this->loginService->handleGoogleCallback($code);

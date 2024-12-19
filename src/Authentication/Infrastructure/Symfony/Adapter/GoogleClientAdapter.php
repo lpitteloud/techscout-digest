@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Authentication\Infrastructure\Symfony\Adapter;
 
 use Authentication\Domain\Port\GoogleClientInterface;
-use KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface;
 use KnpU\OAuth2ClientBundle\Client\Provider\GoogleClient;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
@@ -13,7 +12,7 @@ use League\OAuth2\Client\Token\AccessToken;
 use League\OAuth2\Client\Token\AccessTokenInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-readonly class GoogleClientAdapter implements OAuth2ClientInterface, GoogleClientInterface
+readonly class GoogleClientAdapter implements GoogleClientInterface
 {
     public function __construct(
         private GoogleClient $client,

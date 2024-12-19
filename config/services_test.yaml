@@ -8,7 +8,13 @@ services:
 
     Tests\Authentication\Unit\Infrastructure\Symfony\Adapter\GoogleClientAdapterStub:
         public: true
+        arguments:
+            $provider: '@knpu.oauth2.provider.google'
         
     Authentication\Infrastructure\Symfony\Adapter\GoogleAuthenticationAdapter:
         arguments:
             $googleClient: '@Tests\Authentication\Unit\Infrastructure\Symfony\Adapter\GoogleClientAdapterStub'
+
+    Authentication\Infrastructure\Symfony\Security\GoogleAuthenticator:
+        arguments:
+            $client: '@Tests\Authentication\Unit\Infrastructure\Symfony\Adapter\GoogleClientAdapterStub'

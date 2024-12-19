@@ -37,3 +37,7 @@ services:
     
     Authentication\Infrastructure\Symfony\Adapter\GoogleClientAdapter:
         decorates: 'knpu.oauth2.client.google'
+        
+    Authentication\Infrastructure\Symfony\Security\GoogleAuthenticator:
+        arguments:
+            $client: '@Authentication\Infrastructure\Symfony\Adapter\GoogleClientAdapter'

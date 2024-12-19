@@ -9,7 +9,6 @@ use Authentication\Domain\Model\User;
 use Authentication\Domain\Port\GoogleAuthenticationServiceInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class GoogleLoginServiceTest extends TestCase
 {

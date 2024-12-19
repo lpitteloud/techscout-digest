@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Authentication\Unit\Infrastructure\Symfony\Security;
 
+use Authentication\Domain\Port\GoogleClientInterface;
 use Authentication\Infrastructure\Symfony\Adapter\UserAdapter;
 use Authentication\Infrastructure\Symfony\Security\GoogleAuthenticator;
-use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
-use KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface;
 use League\OAuth2\Client\Provider\GoogleUser;
 use League\OAuth2\Client\Token\AccessToken;
 use PHPUnit\Framework\TestCase;
@@ -18,8 +17,7 @@ class GoogleAuthenticatorTest extends TestCase
 {
     public function testGeneratesAValidUserAdapter(): void
     {
-        $clientRegistryMock = $this->createMock(ClientRegistry::class);
-        $googleClientMock = $this->createMock(OAuth2ClientInterface::class);
+        $googleClientMock = $this->createMock(GoogleClientInterface::class);
         $routerMock = $this->createMock(RouterInterface::class);
 
         $googleClientMock
@@ -34,11 +32,7 @@ class GoogleAuthenticatorTest extends TestCase
             ->method('getAccessToken')
             ->willReturn(new AccessToken(['access_token' => 'mocked_access_token']));
 
-        $clientRegistryMock
-            ->method('getClient')
-            ->willReturn($googleClientMock);
-
-        $authenticator = new GoogleAuthenticator($clientRegistryMock, $routerMock);
+        $authenticator = new GoogleAuthenticator($googleClientMock, $routerMock);
 
         $passport = $authenticator->authenticate($this->createMock(Request::class));
         $userAdapter = $passport->getUser();

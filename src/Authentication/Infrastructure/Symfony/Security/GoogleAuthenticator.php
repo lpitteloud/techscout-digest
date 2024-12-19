@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Authentication\Infrastructure\Symfony\Security;
 
 use Authentication\Domain\Model\User;
+use Authentication\Domain\Port\GoogleClientInterface;
 use Authentication\Infrastructure\Symfony\Adapter\UserAdapter;
-use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
+use League\OAuth2\Client\Token\AccessToken;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +25,7 @@ use function PHPUnit\Framework\assertIsString;
 class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationEntryPointInterface
 {
     public function __construct(
-        private readonly ClientRegistry $clientRegistry,
+        private readonly GoogleClientInterface $client,
         private readonly RouterInterface $router,
     ) {
     }
@@ -36,7 +37,8 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
 
     public function authenticate(Request $request): Passport
     {
-        $client = $this->clientRegistry->getClient('google');
+        $client = $this->client;
+        /** @var AccessToken $accessToken */
         $accessToken = $this->fetchAccessToken($client);
 
         return new SelfValidatingPassport(

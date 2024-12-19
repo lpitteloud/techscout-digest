@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractController
 {
-    #[Route('/dashboard', name: 'dashboard')]
+    #[Route('/dashboard', name: 'dashboard', methods: ['GET'])]
     public function dashboardPage(): Response
     {
         return $this->render('shared/dashboard.html.twig');
