@@ -21,6 +21,7 @@
         "symfony/monolog-bundle": "^3.10",
         "symfony/runtime": "7.1.*",
         "symfony/security-bundle": "7.1.*",
+        "symfony/translation": "7.1.*",
         "symfony/twig-bundle": "7.1.*",
         "symfony/yaml": "7.1.*",
         "symfonycasts/tailwind-bundle": "^0.6.1",

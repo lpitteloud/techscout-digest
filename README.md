@@ -28,7 +28,7 @@ To install and run this project locally, please follow the steps below:
 3. **Start Docker containers**
     - Ensure Docker is running, then start the required containers:
       ```bash
-      docker-compose up -d --build
+      make start
       ```
 
 4. **Access the application**
@@ -53,7 +53,7 @@ This project was created to:
 
 - **Run unit tests**:
   ```bash
-  vendor/bin/phpunit
+  make test
   ```
 
 - **Run BDD tests**:
