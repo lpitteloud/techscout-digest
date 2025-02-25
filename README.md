@@ -53,12 +53,17 @@ This project was created to:
 
 - **Run unit tests**:
   ```bash
-  make test
+  make unit-test
   ```
 
-- **Run BDD tests**:
+- **Run functional tests**:
   ```bash
-  vendor/bin/behat
+  make functional-test
+  ```
+
+- **Run both unit & functional tests**:
+  ```
+  make test
   ```
 
 ## Contribution

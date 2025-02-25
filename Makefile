@@ -38,9 +38,9 @@ sh: ## Connect to the FrankenPHP container
 bash: ## Connect to the FrankenPHP container via bash so up and down arrows go to previous commands
 	@$(PHP_CONT) bash
 
-test: unit-test feature-test ## Start unit test & feature test
+test: unit-test functional-test ## Start unit tests & functional tests
 
-feature-test: ## Start tests with behat
+functional-test: ## Start tests with behat
 	@$(DOCKER_COMP) exec -e APP_ENV=test php vendor/bin/behat
 
 unit-test: ## Start tests with phpunit, pass the parameter "c=" to add options to phpunit, example: make unit-test c="--group e2e --stop-on-failure"
