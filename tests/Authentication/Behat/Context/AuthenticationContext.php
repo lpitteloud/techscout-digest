@@ -6,32 +6,29 @@ namespace Tests\Authentication\Behat\Context;
 
 use Behat\Mink\Exception\ElementNotFoundException;
 use Behat\MinkExtension\Context\RawMinkContext;
+use Behat\Step\Given;
+use Behat\Step\When;
 use PHPUnit\Framework\Assert;
 use Tests\Authentication\Unit\Infrastructure\Symfony\Adapter\GoogleClientAdapterStub;
 
 class AuthenticationContext extends RawMinkContext
 {
-    /**
-     * @Given I am on the login page
-     */
+    #[Given('I am on the login page')]
     public function iAmOnTheLoginPage(): void
     {
         $this->visitPath('/login');
     }
 
     /**
-     * @When I click "Login with Google"
-     *
      * @throws ElementNotFoundException
      */
+    #[When('I click "Login with Google"')]
     public function iClickLoginWithGoogle(): void
     {
         $this->getSession()->getPage()->clickLink('Login with Google');
     }
 
-    /**
-     * @When I am redirected to Google for authentication
-     */
+    #[When('I am redirected to Google for authentication')]
     public function iAmRedirectedToGoogleForAuthentication(): void
     {
         $currentUrl = $this->getSession()->getCurrentUrl();
@@ -43,9 +40,7 @@ class AuthenticationContext extends RawMinkContext
         );
     }
 
-    /**
-     * @When I provide valid Google credentials
-     */
+    #[When('I provide valid Google credentials')]
     public function iProvideValidGoogleCredentials(): void
     {
         $callbackUrl = '/login/google/callback';
