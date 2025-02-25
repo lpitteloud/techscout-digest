@@ -1,12 +1,17 @@
 default:
     suites:
+        default:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - DrevOps\BehatScreenshotExtension\Context\ScreenshotContext
         authentication:
             paths:
                 - '%paths.base%/tests/Authentication/Behat/Features'
             contexts:
-                - Behat\MinkExtension\Context\MinkContext
                 - Tests\Authentication\Behat\Context\RedirectUnauthenticatedUserContext
                 - Tests\Authentication\Behat\Context\UserLoginContext
+                - Tests\Authentication\Behat\Context\UserLogoutContext
+                - Tests\Authentication\Behat\Context\AuthenticationContext
     extensions:
         FriendsOfBehat\SymfonyExtension:
             bootstrap: tests/bootstrap.php
@@ -18,3 +23,4 @@ default:
             sessions:
                 symfony:
                     symfony: ~
+        DrevOps\BehatScreenshotExtension: ~

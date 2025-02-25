@@ -15,6 +15,9 @@ security:
             provider: google_provider
             custom_authenticators:
                 - Authentication\Infrastructure\Symfony\Security\GoogleAuthenticator
+            logout:
+                path: /logout
+                target: login
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used

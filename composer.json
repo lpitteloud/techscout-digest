@@ -85,6 +85,7 @@
         "behat/mink": "^1.12",
         "behat/mink-browserkit-driver": "^2.2",
         "captainhook/captainhook": "^5.23",
+        "drevops/behat-screenshot": "^2.0",
         "friends-of-behat/mink-extension": "^2.7",
         "friends-of-behat/symfony-extension": "^2.6",
         "friendsofphp/php-cs-fixer": "^3.64",
@@ -97,6 +98,8 @@
         "roave/security-advisories": "dev-latest",
         "symfony/browser-kit": "7.1.*",
         "symfony/css-selector": "7.1.*",
-        "symfony/phpunit-bridge": "^7.1"
+        "symfony/phpunit-bridge": "^7.1",
+        "symfony/stopwatch": "7.1.*",
+        "symfony/web-profiler-bundle": "7.1.*"
     }
 }
